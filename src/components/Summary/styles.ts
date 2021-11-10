@@ -4,7 +4,9 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin-top: -10rem; //
+  margin-top: calc(
+    -2.5rem - 5.19025rem
+  ); // padding do main - metade do tamanho do card
 
   div {
     background: var(--shape);
