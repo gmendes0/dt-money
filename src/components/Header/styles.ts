@@ -20,7 +20,7 @@ export const Content = styled.div`
 
     border: none;
     padding: 0.75rem 2rem;
-    border-radius: 0.3125rem;
+    border-radius: var(--border-radius);
 
     font-size: 1rem;
     font-weight: 600;

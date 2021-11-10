@@ -11,7 +11,7 @@ export const Container = styled.div`
   div {
     background: var(--shape);
     padding: 1.574375rem 2rem;
-    border-radius: 0.3125rem;
+    border-radius: var(--border-radius);
     color: var(--text-title);
 
     header {
