@@ -1,31 +1,9 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { Container } from "./styles";
 
-type Transaction = {
-  id: number;
-  title: string;
-  type: string;
-  category: string;
-  amount: number;
-  createdAt: string;
-};
-
 export function TransactionsTable() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  useEffect(() => {
-    api
-      .get<{ transactions: Transaction[] }>("transactions")
-      .then((response) => {
-        if (response.status !== 200)
-          alert("Não foi possível obter as transações");
-
-        console.log(response.data);
-
-        setTransactions(response.data.transactions);
-      });
-  }, []);
+  const { transactions } = useContext(TransactionsContext);
 
   return (
     <Container>

@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import incomeIMG from "../../assets/income.svg";
 import outcomeIMG from "../../assets/outcome.svg";
 import totalIMG from "../../assets/total.svg";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 import { Container } from "./styles";
 
 export function Summary() {
+  const { transactions } = useContext(TransactionsContext);
+
   return (
     <Container>
       <div>
@@ -13,7 +17,13 @@ export function Summary() {
           <img src={incomeIMG} alt="entradas" />
         </header>
 
-        <strong>R$ 4100,00</strong>
+        <strong>
+          {transactions.reduce((acc: number = 0, transaction) => {
+            if (transaction.type === "deposit") return acc + transaction.amount;
+
+            return acc;
+          }, 0)}
+        </strong>
       </div>
       <div>
         <header>
